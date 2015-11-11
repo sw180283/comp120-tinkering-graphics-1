@@ -1,0 +1,49 @@
+#for some reason comments sometimes mess up the code so delete any comments if it won't run
+
+def makeImage2():
+  pic=makePicture(pickAFile())
+  picHeight=getHeight(pic)
+  #getting the picture height helps alignment
+  
+  canvasHeight=500
+  #the canvas is square so the width is the same as the height
+  canvas=makeEmptyPicture(canvasHeight,canvasHeight, black)
+ 
+  show(canvas)
+  
+  targetX=(canvasHeight-picHeight)/2
+  targetY=targetX
+  #make pic centered
+  
+  number=4
+  
+  for loop in range (0,number):
+  #make image move up then down
+    maxHeight=10
+    #number of pixels movem
+    
+    for up in range (0,maxHeight):
+      copyInto(pic, canvas, targetX, targetY-up)
+      repaint(canvas)
+      #move image up
+      
+      for px in getPixels(pic):
+        r1=getRed(px)*1.05
+        g1=getGreen(px)*1.05
+        b1=getBlue(px)*1.05
+        newColor=makeColor(r1,g1,b1)
+        setColor(px,newColor)
+        #make image lighter
+        
+    for down in range (0,maxHeight):
+      copyInto(pic, canvas, targetX, targetY-maxHeight+down)
+      repaint(canvas)
+      #move image down
+      
+      for px in getPixels(pic):
+        r1=getRed(px)*0.95
+        g1=getGreen(px)*0.95
+        b1=getBlue(px)*0.95
+        newColor=makeColor(r1,g1,b1)
+        setColor(px,newColor)
+        #make image darker
