@@ -1,4 +1,4 @@
-def makeImage2():
+def makePowerup():
   pic=makePicture(pickAFile())
   picHeight=getHeight(pic)
   #getting the picture height helps alignment
