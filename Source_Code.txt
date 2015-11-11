@@ -1,4 +1,5 @@
 #for some reason comments sometimes mess up the code so delete any comments if it won't run
+#also some pictures don't work and I don't know why
 
 def makeImage2():
   pic=makePicture(pickAFile())
