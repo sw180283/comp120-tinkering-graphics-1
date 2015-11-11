@@ -14,11 +14,12 @@ def makeImage2():
   #make pic centered
   
   number=4
+  #Number of times to move up and down
   
   for loop in range (0,number):
   #make image move up then down
     maxHeight=10
-    #number of pixels movem
+    #number of pixels move
     
     for up in range (0,maxHeight):
       copyInto(pic, canvas, targetX, targetY-up)
