@@ -23,6 +23,7 @@ def makePowerup():
 
     #move image up
     for up in range (0,maxHeight):
+      setAllPixelsToAColor(canvas, white)
       copyInto(pic, canvas, targetX, targetY-up)
       repaint(canvas)
 
@@ -36,6 +37,7 @@ def makePowerup():
 
     #move image down
     for down in range (0,maxHeight):
+      setAllPixelsToAColor(canvas, white)
       copyInto(pic, canvas, targetX, targetY-maxHeight+down)
       repaint(canvas)
 
