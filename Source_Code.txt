@@ -5,7 +5,7 @@ def makePowerup():
   
   #the canvas is square so the width is the same as the height
   canvasHeight=500
-  canvas=makeEmptyPicture(canvasHeight,canvasHeight, black)
+  canvas=makeEmptyPicture(canvasHeight,canvasHeight, white)
  
   show(canvas)
   
