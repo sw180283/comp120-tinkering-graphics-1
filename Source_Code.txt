@@ -1,48 +1,48 @@
 def makePowerup():
   pic=makePicture(pickAFile())
-  picHeight=getHeight(pic)
   #getting the picture height helps alignment
+  picHeight=getHeight(pic)
   
-  canvasHeight=500
   #the canvas is square so the width is the same as the height
+  canvasHeight=500
   canvas=makeEmptyPicture(canvasHeight,canvasHeight, black)
  
   show(canvas)
   
+  #make pic centered
   targetX=(canvasHeight-picHeight)/2
   targetY=targetX
-  #make pic centered
-  
+
+  #number of times to move up and down
   number=4
-  #Number of times to move up and down
-  
-  for loop in range (0,number):
+
   #make image move up then down
-    maxHeight=10
+  for loop in range (0,number):
     #number of pixels move
-    
+    maxHeight=10
+
+    #move image up
     for up in range (0,maxHeight):
       copyInto(pic, canvas, targetX, targetY-up)
       repaint(canvas)
-      #move image up
-      
+
+      #make image lighter
       for px in getPixels(pic):
         r1=getRed(px)*1.05
         g1=getGreen(px)*1.05
         b1=getBlue(px)*1.05
         newColor=makeColor(r1,g1,b1)
         setColor(px,newColor)
-        #make image lighter
-        
+
+    #move image down
     for down in range (0,maxHeight):
       copyInto(pic, canvas, targetX, targetY-maxHeight+down)
       repaint(canvas)
-      #move image down
-      
+
+      #make image darker
       for px in getPixels(pic):
         r1=getRed(px)*0.95
         g1=getGreen(px)*0.95
         b1=getBlue(px)*0.95
         newColor=makeColor(r1,g1,b1)
         setColor(px,newColor)
-#make image darker
