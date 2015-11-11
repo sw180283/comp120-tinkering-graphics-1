@@ -44,4 +44,4 @@ def makeImage2():
         b1=getBlue(px)*0.95
         newColor=makeColor(r1,g1,b1)
         setColor(px,newColor)
-        #make image darker
+#make image darker
