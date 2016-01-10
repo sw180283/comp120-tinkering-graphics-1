@@ -1,0 +1,106 @@
+#for stars
+import random
+
+def main():
+
+  #see if the image location can be found
+  try:
+    setMediaPath("C:\Users\mum\Desktop\Falmouth\comp120-tinkering-graphics-1")
+    health = makePicture("Health_Powerup.png")
+    energy = makePicture("Energy_Powerup.png")
+  #if fails request user to locate folder with images
+  except StandardError:
+    showError("Image location could not be found, please locate the folder")
+    setMediaPath()
+ 
+ #request user to choose powerup
+  powerup = requestIntegerInRange("Choose a powerup: health [1] or energy [2]", 1, 2)
+  if powerup == 1:
+    powerupChoice = health
+    powerupName = "Health"
+  else:
+    powerupChoice = energy
+    powerupName = "Energy"
+    
+  #getting the picture height helps alignment
+  pic = powerupChoice
+  picHeight=getHeight(pic)
+  picWidth=getWidth(pic)
+  star = makePicture("Star.png")
+  glow = makePicture("Glow.png")
+  
+  #set the canvas height and width, black
+  canvasHeight=picHeight+40
+  canvasWidth=picWidth+40
+  canvas=makeEmptyPicture(canvasWidth, canvasHeight, black)
+ 
+  show(canvas) 
+  
+  #make pic centered
+  targetX=(canvasHeight-picHeight)/2
+  targetY=targetX
+
+  #make image move up then down
+  for loop in range (0,4):
+    #number of pixels move
+    maxHeight=10
+
+    #move image up
+    for up in range (0,maxHeight):
+      setAllPixelsToAColor(canvas, black)
+      addText(canvas, canvasWidth/4, 14, "This is the " + powerupName + " powerup", white)       
+      copyInto(pic, canvas, targetX, targetY-up)
+      
+      #random stars
+      for i in range(0,4):
+        starX = random.randint(0, canvasWidth-40)
+        starY = random.randint(0, canvasHeight-40)
+        copyInto(star, canvas, starX, starY)
+      
+      repaint(canvas)                   
+
+      #make image lighter
+      for px in getPixels(pic):
+        for p in getPixels(glow):
+          r1=getRed(px)*1.05 + getRed(p) * 0.50
+          g1=getGreen(px)*1.05 + getGreen(p) * 0.50
+          b1=getBlue(px)*1.05 + getBlue(p) * 0.50
+
+          newColor=makeColor(r1,g1,b1)
+          setColor(px,newColor)
+          
+      #blend
+      for y in xrange(picHeight):
+        for x in xrange(picWidth):
+          targetPx = getPixel(canvas, x, y)
+          px1 = getPixel(pic, x, y)
+          px2 = getPixel(glow, x, y)
+          
+          r1, g1, b1 = getRed(px1), getGreen(px1), getBlue(px1)
+          r2, g2, b2 = getRed(px2), getGreen(px2), getBlue(px2)
+          
+          blendColor = makeColor((r1+r2)/2, (g1+g2)/2, (b1+b2)/2)
+          setColor(targetPx, blendColor)
+          
+     
+    #move image down
+    for down in range (0,maxHeight):
+      setAllPixelsToAColor(canvas, black)
+      addText(canvas, canvasWidth/2, 14, "This is the " + powerupName + " powerup", white) 
+      copyInto(pic, canvas, targetX, targetY-maxHeight+down)
+      
+      #random stars
+      for i in range(0,4):
+        starX = random.randint(40, 240)
+        starY = random.randint(40, 400)
+        copyInto(star, canvas, starX, starY)
+      
+      repaint(canvas)
+
+      #make image darker
+      for px in getPixels(pic):
+        r1=getRed(px)*0.95
+        g1=getGreen(px)*0.95
+        b1=getBlue(px)*0.95
+        newColor=makeColor(r1,g1,b1)
+        setColor(px,newColor)
