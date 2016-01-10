@@ -2,23 +2,31 @@
 import random
 
 def main():
+
+  #see if the image location can be found
+  try:
+    setMediaPath("C:\Users\mum\Desktop\Falmouth\comp120-tinkering-graphics-1")
+    health = makePicture("Health_Powerup.png")
+    energy = makePicture("Energy_Powerup.png")
+  #if fails request user to locate folder with images
+  except StandardError:
+    showError("Image location could not be found, please locate the folder")
+    setMediaPath()
+ 
+ #request user to choose powerup
   powerup = requestIntegerInRange("Choose a powerup: health [1] or energy [2]", 1, 2)
   if powerup == 1:
-    powerupChoice = makePicture("C:\Users\mum\Desktop\Falmouth\comp120-tinkering-graphics-1\Health_Powerup.png")
+    powerupChoice = health
     powerupName = "Health"
   else:
-    powerupChoice = makePicture("C:\Users\mum\Desktop\Falmouth\comp120-tinkering-graphics-1\Energy_Powerup.png")
+    powerupChoice = energy
     powerupName = "Energy"
     
-  #show(powerupChoice)
-  #addText(powerupChoice, 14, 40, powerupName)
-  
-  #pic=makePicture(pickAFile())
   #getting the picture height helps alignment
   pic = powerupChoice
   picHeight=getHeight(pic)
   picWidth=getWidth(pic)
-  star = makePicture("C:\Users\mum\Desktop\Falmouth\comp120-tinkering-graphics-1\Star.png")
+  star = makePicture("Star.png")
   
   #set the canvas height and width, black
   canvasHeight=500
