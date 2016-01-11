@@ -114,6 +114,7 @@ def main():
     end = requestString("Please exit the program")
     setAllPixelsToAColor(canvas, black) 
     text = "Thank you for using this program"
+    myFont = makeStyle("Comic Sans", Font.BOLD, 14)
     xpos = 14
     ypos = picHeight/2
     addTextWithStyle(canvas, xpos, ypos, text, myFont, white)
