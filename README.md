@@ -10,7 +10,7 @@ I intend to make this sci-fi through the choice of powerup (energy, health, poti
 #Update
 So far in my code, the user is prompted to select between a health, energy, potion and light powerup. This choice is then named and remembered which picture has been choosen.
 
-When the image is displayed on the canvas, it moves up while lightening the image and then down while darkening the image. Also, random stars positions are copied on the canvas.
+When the image is displayed on the canvas, it moves up while lightening the image and then down while darkening the image. Also, random star positions are copied on the canvas.
 
 The only import function so far is random which has been used for the stars and colour change.
 
