@@ -6,6 +6,7 @@ def main():
 
   #see if the image location can be found
   try:
+    showInformation("Find the folder Image in this project file")
     setMediaPath()
     health = makePicture("Health_Powerup.png")
     energy = makePicture("Energy_Powerup.png")
@@ -59,7 +60,8 @@ def main():
   targetY=targetX
 
   #make image move up then down
-  for loop in range (0,4):
+  loopNumber = 4
+  for loop in range (0, loopNumber):
     #number of pixels move
     maxHeight=4
 
@@ -120,7 +122,7 @@ def main():
   if repeat == "y":
     main()
   else:
-    end = requestString("Please exit the program")
+    showInformation("Please exit the program")
     setAllPixelsToAColor(canvas, black) 
     text = "Thank you for using this program"
     myFont = makeStyle("Comic Sans", Font.BOLD, 14)
